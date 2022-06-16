@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import React from 'react';
+import React, { Component } from 'react';
 import Welcome from './components/Welcome';
 import Comment from './components/Comment';
 import Car from './components/Car';
 import Menu from './components/MenuComponent';
+import { DISHES } from './shared/dishes';
 
 // Exercise 2
 // class App extends React.Component {
@@ -51,17 +52,33 @@ import Menu from './components/MenuComponent';
 //   )
 // }
 
-function App() {
-  return (
-    <div className="App">
-      <Navbar dark color='primary'>
-        <div className='container'>
-          <NavbarBrand href='/'>Ristorante Con Fusion</NavbarBrand>
-        </div>
-      </Navbar>
-      <Menu />
-    </div>
-  )
+// function App() {
+//   return (
+//     <div className="App">
+//       <Navbar dark color='primary'>
+//         <div className='container'>
+//           <NavbarBrand href='/'>Ristorante Con Fusion</NavbarBrand>
+//         </div>
+//       </Navbar>
+//       <Menu />
+//     </div>
+//   )
+// }
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dishes: DISHES
+    };
+  }
+  render() {
+    return (
+      <Menu dishes={this.state.dishes} />
+    )
+  }
 }
+
+
 
 export default App;
