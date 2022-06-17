@@ -1,77 +1,33 @@
 import React, { Component } from "react";
-import { Media } from 'reactstrap';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
-import DishDetail from "./DishdetailComponent";
 
 class Menu extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     dishes: [
-        //         {
-        //             id: 0,
-        //             name: 'Uthappizza',
-        //             image: '/assets/images/uthappizza.png',
-        //             category: 'mains',
-        //             label: 'Hot',
-        //             price: '4.99',
-        //             description: "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives,"
-        //                 + " ripe vine cherry tomatoes, Vidallia onion, Guntur chillies and Buffalo Panner."
-        //         },
-        //         {
-        //             id: 1,
-        //             name: 'Zucchipakoda',
-        //             image: '/assets/images/zucchipakoda.png',
-        //             category: 'appetizer',
-        //             label: '',
-        //             price: '1.99',
-        //             description: "Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce"
-        //         }, {
-        //             id: 2,
-        //             name: 'Vadonut',
-        //             image: '/assets/images/vadonut.png',
-        //             category: 'appetizer',
-        //             label: 'New',
-        //             price: '1.99',
-        //             description: "A quintessential ConFusion experience, is it a vada or is it s donut?"
-        //         }, {
-        //             id: 3,
-        //             name: 'ElaiCheese Cake',
-        //             image: '/assets/images/elaicheesecake.png',
-        //             category: 'dessert',
-        //             label: '',
-        //             price: '2.99',
-        //             description: "A delectable, semi-sweet New York Style Cheese Cake, with Graham craker crust and spiced with Indian cardamons"
-        //         }
-        //     ],
-        // }; //end state
-        this.state = {
-            selectedDish: null
-        }
-    }// end constuctor
 
-    onDishSelect(dish) {
-        this.setState({ selectedDish: dish })
+        // onDishSelect(dish) {
+        //     this.setState({ selectedDish: dish })
+        // }
+
+        // renderDish(dish) {
+        //     if (dish != null) {
+        //         return (
+        //             <Card>
+        //                 <CardImg top src={dish.image} alt={dish.name} />
+        //                 <CardBody>
+        //                     <CardTitle>{dish.name}</CardTitle>
+        //                     <CardText>{dish.description}</CardText>
+        //                 </CardBody>
+        //             </Card>
+        //         );
+        //     } else {
+        //         return (
+        //             <div></div>
+        //         );
+        //     }
+        // }
+
     }
-
-    // renderDish(dish) {
-    //     if (dish != null) {
-    //         return (
-    //             <Card>
-    //                 <CardImg top src={dish.image} alt={dish.name} />
-    //                 <CardBody>
-    //                     <CardTitle>{dish.name}</CardTitle>
-    //                     <CardText>{dish.description}</CardText>
-    //                 </CardBody>
-    //             </Card>
-    //         );
-    //     } else {
-    //         return (
-    //             <div></div>
-    //         );
-    //     }
-    // }
-
     render() {
         const menu = this.props.dishes.map((dish) => {
             return (
@@ -87,8 +43,17 @@ class Menu extends Component {
                 //         </Media>
                 //     </Media>
                 // </div>
+                // Exercise 3.2
+                // <div className="col-12 col-md-5 m-1">
+                //     <Card key={dish.id} onClick={() => this.onDishSelect(dish)}>
+                //         <CardImg width="100%" src={dish.image} alt={dish.name} />
+                //         <CardImgOverlay>
+                //             <CardTitle>{dish.name}</CardTitle>
+                //         </CardImgOverlay>
+                //     </Card>
+                // </div>
                 <div className="col-12 col-md-5 m-1">
-                    <Card key={dish.id} onClick={() => this.onDishSelect(dish)}>
+                    <Card key={dish.id} onClick={() => this.props.onClick(dish.id)} >
                         <CardImg width="100%" src={dish.image} alt={dish.name} />
                         <CardImgOverlay>
                             <CardTitle>{dish.name}</CardTitle>
@@ -101,9 +66,6 @@ class Menu extends Component {
             <div className="container">
                 <div className="row">
                     {menu}
-                </div>
-                <div className="row">
-                    <DishDetail dish={this.state.selectedDish} />
                 </div>
             </div>
         );

@@ -7,6 +7,7 @@ import Comment from './components/Comment';
 import Car from './components/Car';
 import Menu from './components/MenuComponent';
 import { DISHES } from './shared/dishes';
+import Main from './components/MainComponent';
 
 // Exercise 2
 // class App extends React.Component {
@@ -65,27 +66,39 @@ import { DISHES } from './shared/dishes';
 //   )
 // }
 
-class App extends Component {
+// Exercise 3.2
+// class App extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       dishes: DISHES
+//     };
+//   }
+//   render() {
+//     return (
+//       <div className="App">
+//         <Navbar dark color='primary'>
+//           <div className='container'>
+//             <NavbarBrand href='/'>Ristorante Con Fusion</NavbarBrand>
+//           </div>
+//         </Navbar>
+//         <Menu dishes={this.state.dishes} />
+//       </div>
+//     )
+//   }
+// }
+
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dishes: DISHES
-    };
   }
   render() {
     return (
-      <div className="App">
-        <Navbar dark color='primary'>
-          <div className='container'>
-            <NavbarBrand href='/'>Ristorante Con Fusion</NavbarBrand>
-          </div>
-        </Navbar>
-        <Menu dishes={this.state.dishes} />
+      <div className='App'>
+        <Main />
       </div>
     )
   }
 }
-
-
 
 export default App;
