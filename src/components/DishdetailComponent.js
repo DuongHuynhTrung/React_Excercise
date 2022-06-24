@@ -31,8 +31,8 @@ function renderComments({ comments }) {
     );
 }
 const DishDetail = (props) => {
-    if (this.props.dish != null) {
-        const comment = this.props.dish.comments.map((item) => {
+    if (props.dish != null) {
+        const comment = props.dish.comments.map((item) => {
             return (
                 <div>
                     <p>{item.comment}</p>
@@ -40,7 +40,7 @@ const DishDetail = (props) => {
                 </div>
             );
         });
-        const dish = this.props.dish;
+        const dish = props.dish;
         return (
             <div className="container">
                 <div className="row">
