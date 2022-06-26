@@ -24,7 +24,7 @@ function Contact(props) {
                 <div className="col-12 col-sm-11 offset-sm-1">
                     <div className="btn-group" role="group">
                         <a role="button" className="btn btn-primary" href="Tel: +852 1234 5678"><i className="fa fa-phone">Call</i></a>
-                        <a role="button" className="btn btn-info"><i className="fa fa-skype"></i>Skype</a>
+                        <a role="button" className="btn btn-info" href="/"><i className="fa fa-skype"></i>Skype</a>
                         <a role="button" className="btn btn-success" href="mailto:confusion@foot.net"><i className="fa fa-envolope-o">Email</i></a>
                     </div>
                 </div>
