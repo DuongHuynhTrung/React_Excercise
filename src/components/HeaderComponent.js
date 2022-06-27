@@ -70,9 +70,9 @@ class HeaderComponent extends Component {
                                     Our lipsmacking creations will tickle your culimary senses </p>
                             </div>
                             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal} >
-                                <Modal.Header toggle={this.toggleModal} closeButton>
+                                <ModalHeader toggle={this.toggleModal} closeButton>
                                     <ModalTitle>Login</ModalTitle>
-                                </Modal.Header>
+                                </ModalHeader>
                                 <ModalBody>
                                     <Form onSubmit={this.handleLogin}>
                                         <FormGroup>

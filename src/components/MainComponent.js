@@ -8,9 +8,19 @@ import Home from "./HomeComponent";
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
+import { connect } from "react-redux/es/exports";
 import DishDetail from "./DishdetailComponent";
 import About from "./AboutComponent";
+
+const mapStateToProps = state => {
+    return {
+        dishes: state.dishes,
+        comments: state.comments,
+        promotions: state.promotions,
+        leaders: state.leaders
+    }
+}
 
 class Main extends Component {
     constructor(props) {
@@ -41,6 +51,7 @@ class Main extends Component {
                     comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))} />
             );
         };
+
         return (
             <div>
                 <Header />
@@ -58,4 +69,5 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));
+;
