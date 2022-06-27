@@ -9,25 +9,24 @@ import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
 import { Redirect, Route, Switch } from "react-router-dom";
+import DishDetail from "./DishdetailComponent";
+import About from "./AboutComponent";
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
             dishes: DISHES,
-            comment: COMMENTS,
+            comments: COMMENTS,
             promotions: PROMOTIONS,
             leaders: LEADERS
         };
     }
 
-    // onDishSelect(dishId) {
-    //     this.setState({ selectedDish: dishId })
-    // }
-
     render() {
         const HomePage = () => {
             return (
+                //Tai sao dung filter lại ko chạy được.
                 console.log(this.state.dishes.filter((dish) => dish.featured === true)),
                 <Home
                     dish={this.state.dishes.find((dish) => dish.featured === true)}
@@ -36,6 +35,12 @@ class Main extends Component {
                 />
             )
         }
+        const DishWithId = ({ match }) => {
+            return (
+                <DishDetail dish={this.state.dishes.find((dish) => dish.id === parseInt(match.params.dishId, 10))}
+                    comments={this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId, 10))} />
+            );
+        };
         return (
             <div>
                 <Header />
@@ -43,7 +48,9 @@ class Main extends Component {
                     <Route path='/home' component={HomePage} />
                     <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes} />} />
                     <Route exact path='/contactus' component={Contact} />
-                    {/* <Redirect to='/home' /> */}
+                    <Route exact path='/aboutus' component={() => <About leaders={this.state.leaders} />} />
+                    <Route path='/menu/:dishId' component={DishWithId} />
+                    <Redirect to='/home' />
                 </Switch>
                 <Footer />
             </div>
